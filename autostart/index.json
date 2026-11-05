@@ -1,0 +1,140 @@
+{
+  "count": 19,
+  "published_at": "2026-11-05T17:34:28Z",
+  "schema_version": 1,
+  "scripts": [
+    {
+      "name": "APB_autostart.bash",
+      "path": "APB_autostart.bash",
+      "prefix": "APB",
+      "sha256": "b937c8daddc1642b33f0806d18771e37c6aac3bd97b881ee40dce4867dbc72b2",
+      "size": 3809
+    },
+    {
+      "name": "APCDQR_autostart.bash",
+      "path": "APCDQR_autostart.bash",
+      "prefix": "APCDQR",
+      "sha256": "b7ccfb47a8d2c6c1b8c6672c8b11eba65c6aff218e30ee06fd737bdfc9b268b6",
+      "size": 3759
+    },
+    {
+      "name": "APCRV2_BAT_autostart.bash",
+      "path": "APCRV2_BAT_autostart.bash",
+      "prefix": "APCRV2_BAT",
+      "sha256": "19b4f012bff37ef538421835cfb00d94f11198895718200e42ad28c8075e8a64",
+      "size": 3883
+    },
+    {
+      "name": "APCRV2_autostart.bash",
+      "path": "APCRV2_autostart.bash",
+      "prefix": "APCRV2",
+      "sha256": "4b6cc32261bc7c635cff78697c232388fac113bd501e842b56f9eec8a977a387",
+      "size": 3759
+    },
+    {
+      "name": "APCR_BAT_autostart.bash",
+      "path": "APCR_BAT_autostart.bash",
+      "prefix": "APCR_BAT",
+      "sha256": "c0c61934e8deaba4e0b402e0f9fe1aed656f6c8f0b39b23b382fac6a5a3241c0",
+      "size": 3821
+    },
+    {
+      "name": "APCR_autostart.bash",
+      "path": "APCR_autostart.bash",
+      "prefix": "APCR",
+      "sha256": "d7ece264996585d0fd2b17d97f000d3d0782ecd0786287a965ed6b965b6566e9",
+      "size": 3697
+    },
+    {
+      "name": "ART1605FT_autostart.bash",
+      "path": "ART1605FT_autostart.bash",
+      "prefix": "ART1605FT",
+      "sha256": "47f579a53a0147093e17423da1e8d1688a96af34759594acc51478b24a53f243",
+      "size": 3807
+    },
+    {
+      "name": "BPCB_autostart.bash",
+      "path": "BPCB_autostart.bash",
+      "prefix": "BPCB",
+      "sha256": "c93dc4bd740ca0a985a77ca1cb930ea55d3f839b4c874fde14fcffc7905683a6",
+      "size": 2569
+    },
+    {
+      "name": "BPCR_autostart.bash",
+      "path": "BPCR_autostart.bash",
+      "prefix": "BPCR",
+      "sha256": "b66c0fad6a4c9cf476344e465345b3a7c1502e2e7af2ff3476a5de3e77026385",
+      "size": 3697
+    },
+    {
+      "name": "BPCV2FT_autostart.bash",
+      "path": "BPCV2FT_autostart.bash",
+      "prefix": "BPCV2FT",
+      "sha256": "b5cbf892e046f868062c34d308744c4ef46672d45cfd6f793ba3ce67ea7a0649",
+      "size": 3790
+    },
+    {
+      "name": "BPCV2_autostart.bash",
+      "path": "BPCV2_autostart.bash",
+      "prefix": "BPCV2",
+      "sha256": "b1b0264d1bcc9af23a7a3c5528ec9a052c5fb3c4fffefcbdc286fe40b0a725e0",
+      "size": 3728
+    },
+    {
+      "name": "EBZ_autostart.bash",
+      "path": "EBZ_autostart.bash",
+      "prefix": "EBZ",
+      "sha256": "5783bca8762937a4a89b0f10f00035a147eb304a2936856577ea263805141daa",
+      "size": 3666
+    },
+    {
+      "name": "MBK_autostart.bash",
+      "path": "MBK_autostart.bash",
+      "prefix": "MBK",
+      "sha256": "906d5acc07a9c7e571f6da1651aaae01e41ef35414a0181e29fab58e0744afdd",
+      "size": 3730
+    },
+    {
+      "name": "MSP1605_autostart.bash",
+      "path": "MSP1605_autostart.bash",
+      "prefix": "MSP1605",
+      "sha256": "497eccf3518d0aa42f4079be9ac700ddaaf454f955ba6eed7ae046bd769ff35d",
+      "size": 3790
+    },
+    {
+      "name": "MSP_autostart.bash",
+      "path": "MSP_autostart.bash",
+      "prefix": "MSP",
+      "sha256": "3ec9441b229cd4f5ec3e18e8ef76fb3290e7442a8e64b8dfce9009741a95e8d2",
+      "size": 3666
+    },
+    {
+      "name": "PKT_autostart.bash",
+      "path": "PKT_autostart.bash",
+      "prefix": "PKT",
+      "sha256": "af076f2f9c33f6d5f5341b70b6bfd02a5b460bc1864e3ec668401839241c94d6",
+      "size": 3666
+    },
+    {
+      "name": "PTM_autostart.bash",
+      "path": "PTM_autostart.bash",
+      "prefix": "PTM",
+      "sha256": "f34de92b3733e30158d13eeb6a663dec06502b1e603bfdd4bcd76fd8cbb5770e",
+      "size": 3737
+    },
+    {
+      "name": "SBIA_autostart.bash",
+      "path": "SBIA_autostart.bash",
+      "prefix": "SBIA",
+      "sha256": "302e2823f68488efe9db6cc5d1d51f8f46cd4c06e8527d6377aec316bfaaad23",
+      "size": 3720
+    },
+    {
+      "name": "WMZ_APC_autostart.bash",
+      "path": "WMZ_APC_autostart.bash",
+      "prefix": "WMZ_APC",
+      "sha256": "e6bd13007fb00b2bdf30b4e4f24577cc1c1a4e3744c61a23951d322b6b5daa72",
+      "size": 3854
+    }
+  ]
+}

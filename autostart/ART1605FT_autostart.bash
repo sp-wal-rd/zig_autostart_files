@@ -1,0 +1,114 @@
+#!/bin/bash
+
+# Define the original script path
+ART_bash_script="$HOME/ART_TEST_ZIG_FAST/ART_Test_Bench.bash"
+
+
+dos2unix $HOME/*TEST_ZIG*/*.bash 2>/dev/null || true
+dos2unix $HOME/*Test_Zig*/*.bash 2>/dev/null || true
+dos2unix $HOME/*.bash 2>/dev/null || true
+rm -f $HOME/d2utmp* $HOME/*TEST_ZIG*/d2utmp* $HOME/*Test_Zig*/d2utmp* 2>/dev/null || true
+
+# Define the website or server to ping
+target="google.com"
+
+echo "Checking internet connection..."
+# Define an array of GPIO pins
+pins=(7 25 8)
+# Loop through the pins and configure each one
+for pin in "${pins[@]}"; do
+    # Check if the pin is already exported
+    if [ ! -e "/sys/class/gpio/gpio$pin" ]; then
+        echo "$pin" | sudo tee /sys/class/gpio/export >/dev/null 2>&1
+    fi
+    sync
+    # Set the direction and turn the pin on
+    echo "out" | sudo tee /sys/class/gpio/gpio$pin/direction >/dev/null 2>&1 && sync
+    echo "1" | sudo tee /sys/class/gpio/gpio$pin/value >/dev/null 2>&1 && sync
+done
+
+while ! ping -c 1 -W 2 "$target" &> /dev/null; do
+  echo "Internet connection is down. Retrying..."
+    # Turn all the pins off
+    for pin in "${pins[@]}"; do
+        echo "0" | sudo tee /sys/class/gpio/gpio$pin/value >/dev/null 2>&1
+    done
+    sync
+    sleep 0.2
+    # Turn all the pins on
+    for pin in "${pins[@]}"; do
+        echo "1" | sudo tee /sys/class/gpio/gpio$pin/value >/dev/null 2>&1
+    done
+    sync
+    sleep 0.2
+done
+# for pin in "${pins[@]}"; do
+#     echo "0" | sudo tee /sys/class/gpio/gpio$pin/value >/dev/null 2>&1
+# done
+echo "Internet connection is now working."
+
+for file in ./*_autostART.bash; do
+    # Skip ART1605FT_autostART
+    if [ "$(basename "$file")" != "ART1605FT_autostART" ]; then
+        echo "deleting $file"
+        rm $file
+        # Put your commands here
+    fi
+done
+for file in ./*TEST_ZIG*; do
+    # Skip ART1605FT_autostART
+    if [ "$(basename "$file")" != "ART_TEST_ZIG_FAST" ]; then
+        echo "deleting $file"
+        rm -rf $file
+        # Put your commands here
+    fi
+done
+for file in ./.config/autostART/*; do
+    # Skip ART1605FT_autostART
+    if [ "$(basename "$file")" != "ART_Test_Bench_Run.desktop" ]; then
+        echo "deleting $file"
+        rm -f $file 2>/dev/null || true
+        # Put your commands here
+    fi
+done
+# Check if the SSH key exists
+if [ -f "$HOME/.ssh/ART_SSH_KEY" ]; then
+export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/ART_SSH_KEY -o StrictHostKeyChecking=no -o BatchMode=yes"
+
+if [ -s "$ART_bash_script" ]; then
+    # Run the original script
+    echo "Running the original script..."
+    cd $HOME/ART_TEST_ZIG_FAST
+    # git fetch origin
+    # # git reset --hard origin/master
+    # git reset --hard origin/New_Features
+    # Shallow update: this repo carries a lot of historical firmware zips
+    # and the jig only needs the current snapshot, so fetch just that.
+    BR=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    if [ -z "$BR" ] || [ "$BR" = "HEAD" ]; then BR=main; fi
+    git fetch --depth=1 origin "$BR" && git reset --hard FETCH_HEAD
+    sync
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/ART_Test_Bench.bash"
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/ART_autost.bash"
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/downloadPRDApp.bash"
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/arm/bin/adownload"
+
+    # lxterminal -e "bash $ART_bash_script"
+    $ART_bash_script
+else
+    cd $HOME
+    rm -rf ~/ART_TEST_ZIG_FAST
+    git clone --depth 1 git@github.com:Jaydeep2990/ART_TEST_ZIG_FAST.git
+    sync
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/ART_Test_Bench.bash"
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/ART_autost.bash"
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/downloadPRDApp.bash"
+    chmod +x "$HOME/ART_TEST_ZIG_FAST/arm/bin/adownload"
+
+    echo "Running the original script..."
+    #lxterminal -e "bash $ART_bash_script"
+    $ART_bash_script
+fi
+else 
+read -p "SSH_KEY not Found!!!!!"
+fi
