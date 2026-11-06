@@ -50,6 +50,20 @@ done
 echo "Internet connection is now working."
 
 # Check if the original script file exists and has a non-zero size
+# Load the deploy key into an agent BEFORE any git call. Without an
+# agent, ssh-add fails with "Could not open a connection to your
+# authentication agent", no key is ever offered, and the clone dies
+# with "Permission denied (publickey)".
+if [ -f "$HOME/.ssh/BPCB_SSH_KEY" ]; then
+    # Name the key to git directly. This is what APB and ART1605FT do and
+    # it is the part that does not depend on an agent existing - which it
+    # does not when the script is run over a deployment SSH session.
+    export GIT_SSH_COMMAND="ssh -i $HOME/.ssh/BPCB_SSH_KEY -o StrictHostKeyChecking=no -o BatchMode=yes"
+    # The agent is still started so the plain `ssh -T git@github.com`
+    # reachability check below has a key to offer.
+    eval "$(ssh-agent -s)" >/dev/null 2>&1
+    ssh-add ~/.ssh/BPCB_SSH_KEY >/dev/null 2>&1
+fi
 if [ -s "$BPCB_bash_script" ]; then
     # Run the original script
     echo "Running the original script..."

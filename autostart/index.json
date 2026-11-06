@@ -1,6 +1,6 @@
 {
   "count": 19,
-  "published_at": "2026-11-05T17:34:28Z",
+  "published_at": "2026-11-06T08:13:18Z",
   "schema_version": 1,
   "scripts": [
     {
@@ -56,8 +56,8 @@
       "name": "BPCB_autostart.bash",
       "path": "BPCB_autostart.bash",
       "prefix": "BPCB",
-      "sha256": "c93dc4bd740ca0a985a77ca1cb930ea55d3f839b4c874fde14fcffc7905683a6",
-      "size": 2569
+      "sha256": "7e44586595c84b68073b6a40f1d1b8ab103036afe5c591195066d65ca4d8b5aa",
+      "size": 3389
     },
     {
       "name": "BPCR_autostart.bash",
